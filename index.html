@@ -232,12 +232,12 @@
                 >
                   <tr>
                     <!-- Table Headings -->
-                    <th scope="col" class="px-6 py-3">#</th>
-                    <th scope="col" class="px-6 py-3">Name</th>
-                    <th scope="col" class="px-6 py-3">Price</th>
-                    <th scope="col" class="px-6 py-3">Total Volume</th>
-                    <th scope="col" class="px-6 py-3">24h Change</th>
-                    <th scope="col" class="px-6 py-3">7D Change</th>
+                    <th scope="col" class="px-6 py-3 w-1/12">#</th>
+                    <th scope="col" class="px-6 py-3 w-3/12">Name</th>
+                    <th scope="col" class="px-6 py-3 w-2/12">Price</th>
+                    <th scope="col" class="px-6 py-3 w-2/12">Total Volume</th>
+                    <th scope="col" class="px-6 py-3 w-2/12">24h Change</th>
+                    <th scope="col" class="px-6 py-3 w-2/12">7D Change</th>
                     <th scope="col" class="p-4">
                       <div class="flex items-center">
                         <input
@@ -252,53 +252,7 @@
                     </th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr
-                    class="bg-white border-b dark:bg-neutral-800 dark:border-gray-700 hover:bg-neutral-50 dark:hover:bg-neutral-600"
-                    id="table-row"
-                  >
-                    <!-- Name -->
-                    <td id="name-image" class="px-6 py-4">1</td>
-                    <th
-                      scope="row"
-                      class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
-                    >
-                      <img
-                        class="w-10 h-10 rounded-full"
-                        src="/docs/images/people/profile-picture-1.jpg"
-                        alt="Jese image"
-                      />
-                      <div class="ps-3">
-                        <div class="text-base font-semibold">Bitcoin</div>
-                      </div>
-                    </th>
-                    <!-- Price -->
-                    <td id="price" class="px-6 py-4">$53,40,810.00</td>
-                    <!-- Total Volume -->
-                    <td id="total-volumen" class="px-6 py-4">1645412974688</td>
-                    <!-- 24h Change -->
-                    <td id="24h-change" class="px-6 py-4">
-                      <span
-                        class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300"
-                        >-0.22778%</span
-                      >
-                    </td>
-                    <!-- 7D Change -->
-                    <td id="7d-change" class="px-6 py-4">-0.22778%</td>
-                    <!-- Add To Wishlist -->
-                    <td id class="w-4 p-4">
-                      <div class="flex items-center">
-                        <input
-                          id="checkbox-table-search-1"
-                          type="checkbox"
-                          class="w-4 h-4 text-blue-600 bg-neutral-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-neutral-700 dark:border-gray-600"
-                        />
-                        <label for="checkbox-table-search-1" class="sr-only"
-                          >checkbox</label
-                        >
-                      </div>
-                    </td>
-                  </tr>
+                <tbody id="table-body">
                 </tbody>
               </table>
             </div>
