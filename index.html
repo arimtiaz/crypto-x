@@ -9,6 +9,7 @@
     />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css" />
+
     <title>CryptoX</title>
   </head>
   <body class="bg-[#021717]">
@@ -23,7 +24,8 @@
           data-tabs-inactive-classes="text-gray-500 hover:text-white dark:hover:text-white border-transparent hover:border-gray-300 dark:border-gray-700"
           role="tablist"
         >
-          <li role="presentation">
+          <!-- Market Tab -->
+          <li role="market">
             <button
               class="inline-flex items-center px-4 py-3 text-white bg-blue-700 rounded-lg w-full dark:bg-teal-700"
               id="market-tab"
@@ -52,7 +54,8 @@
               Market
             </button>
           </li>
-          <li role="presentation">
+          <!-- Wishlist Tab -->
+          <li role="wishlist">
             <button
               class="inline-flex items-center px-4 py-3 text-white rounded-lg w-full dark:bg-teal-700"
               id="wishlist-tab"
@@ -82,7 +85,8 @@
               Wishlist
             </button>
           </li>
-          <li role="presentation">
+          <!-- Wallet Tab -->
+          <li role="wallet">
             <button
               class="inline-flex items-center px-4 py-3 text-white rounded-lg w-full dark:bg-teal-700"
               id="wallet-tab"
@@ -115,25 +119,193 @@
         </ul>
 
         <!-- Tab Contents -->
-        <div id="default-styled-tab-content">
+        <div id="default-styled-tab-content" class="w-full">
+          <!-- Market Tab Content -->
           <div
-            class="p-6 bg-gray-50 text-medium text-gray-500 dark:text-gray-400 dark:bg-[#032928] rounded-lg w-full"
+            class="p-6 bg-neutral-50 text-medium text-gray-500 dark:text-gray-400 dark:bg-[#032928] rounded-lg w-full"
             id="styled-market"
             role="tabpanel"
             aria-labelledby="market-tab"
           >
-            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">
-              Market Tab
-            </h3>
-            <p class="mb-2">
-              This is some placeholder content for the Market tab's associated content. Clicking another tab will toggle the visibility of this one for the next.
-            </p>
-            <p>
-              The tab JavaScript swaps classes to control the content visibility and styling.
-            </p>
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+              <div
+                class="flex items-center justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 bg-white dark:bg-neutral-900 p-6"
+              >
+                <div class="">
+                  <button
+                    id="dropdownActionButton"
+                    data-dropdown-toggle="dropdownAction"
+                    class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-neutral-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-neutral-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-neutral-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+                    type="button"
+                  >
+                    <span class="sr-only">Action button</span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                      class="w-4 h-4 mr-2 text-gray-400"
+                      viewbox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                    Filter
+                    <svg
+                      class="w-2.5 h-2.5 ms-2.5"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 10 6"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="m1 1 4 4 4-4"
+                      />
+                    </svg>
+                  </button>
+                  <!-- Dropdown menu -->
+                  <div
+                    id="dropdownAction"
+                    class="z-10 hidden w-48 p-3 bg-white rounded-lg shadow dark:bg-neutral-700"
+                  >
+                    <ul
+                      class="space-y-2 text-sm"
+                      aria-labelledby="dropdownDefault"
+                    >
+                      <li class="flex items-center">
+                        <input
+                          id="apple"
+                          type="checkbox"
+                          value=""
+                          class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+                        />
+                        <label
+                          for="apple"
+                          class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                        >
+                          Apple (56)
+                        </label>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <label for="table-search" class="sr-only">Search</label>
+                <div class="relative">
+                  <div
+                    class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none"
+                  >
+                    <svg
+                      class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                      />
+                    </svg>
+                  </div>
+                  <input
+                    type="text"
+                    id="table-search-users"
+                    class="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-neutral-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-neutral-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Search for users"
+                  />
+                </div>
+              </div>
+              <table
+                class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+              >
+                <thead
+                  class="text-xs text-gray-700 uppercase bg-neutral-50 dark:bg-neutral-700 dark:text-gray-400"
+                >
+                  <tr>
+                    <!-- Table Headings -->
+                    <th scope="col" class="px-6 py-3">#</th>
+                    <th scope="col" class="px-6 py-3">Name</th>
+                    <th scope="col" class="px-6 py-3">Price</th>
+                    <th scope="col" class="px-6 py-3">Total Volume</th>
+                    <th scope="col" class="px-6 py-3">24h Change</th>
+                    <th scope="col" class="px-6 py-3">7D Change</th>
+                    <th scope="col" class="p-4">
+                      <div class="flex items-center">
+                        <input
+                          id="checkbox-all-search"
+                          type="checkbox"
+                          class="w-4 h-4 text-blue-600 bg-neutral-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-neutral-700 dark:border-gray-600"
+                        />
+                        <label for="checkbox-all-search" class="sr-only"
+                          >checkbox</label
+                        >
+                      </div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    class="bg-white border-b dark:bg-neutral-800 dark:border-gray-700 hover:bg-neutral-50 dark:hover:bg-neutral-600"
+                    id="table-row"
+                  >
+                    <!-- Name -->
+                    <td id="name-image" class="px-6 py-4">1</td>
+                    <th
+                      scope="row"
+                      class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
+                    >
+                      <img
+                        class="w-10 h-10 rounded-full"
+                        src="/docs/images/people/profile-picture-1.jpg"
+                        alt="Jese image"
+                      />
+                      <div class="ps-3">
+                        <div class="text-base font-semibold">Bitcoin</div>
+                      </div>
+                    </th>
+                    <!-- Price -->
+                    <td id="price" class="px-6 py-4">$53,40,810.00</td>
+                    <!-- Total Volume -->
+                    <td id="total-volumen" class="px-6 py-4">1645412974688</td>
+                    <!-- 24h Change -->
+                    <td id="24h-change" class="px-6 py-4">
+                      <span
+                        class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300"
+                        >-0.22778%</span
+                      >
+                    </td>
+                    <!-- 7D Change -->
+                    <td id="7d-change" class="px-6 py-4">-0.22778%</td>
+                    <!-- Add To Wishlist -->
+                    <td id class="w-4 p-4">
+                      <div class="flex items-center">
+                        <input
+                          id="checkbox-table-search-1"
+                          type="checkbox"
+                          class="w-4 h-4 text-blue-600 bg-neutral-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-neutral-700 dark:border-gray-600"
+                        />
+                        <label for="checkbox-table-search-1" class="sr-only"
+                          >checkbox</label
+                        >
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
+          <!-- Wishlist Tab Content -->
           <div
-            class="hidden p-6 bg-gray-50 text-medium text-gray-500 dark:text-gray-400 dark:bg-[#032928] rounded-lg w-full"
+            class="hidden p-6 bg-neutral-50 text-medium text-gray-500 dark:text-gray-400 dark:bg-[#032928] rounded-lg w-full"
             id="styled-wishlist"
             role="tabpanel"
             aria-labelledby="wishlist-tab"
@@ -142,14 +314,18 @@
               Wishlist Tab
             </h3>
             <p class="mb-2">
-              This is some placeholder content for the Wishlist tab's associated content. Clicking another tab will toggle the visibility of this one for the next.
+              This is some placeholder content for the Wishlist tab's associated
+              content. Clicking another tab will toggle the visibility of this
+              one for the next.
             </p>
             <p>
-              The tab JavaScript swaps classes to control the content visibility and styling.
+              The tab JavaScript swaps classes to control the content visibility
+              and styling.
             </p>
           </div>
+          <!-- Wallet Tab Content -->
           <div
-            class="hidden p-6 bg-gray-50 text-medium text-gray-500 dark:text-gray-400 dark:bg-[#032928] rounded-lg w-full"
+            class="hidden p-6 bg-neutral-50 text-medium text-gray-500 dark:text-gray-400 dark:bg-[#032928] rounded-lg w-full"
             id="styled-wallet"
             role="tabpanel"
             aria-labelledby="wallet-tab"
@@ -158,15 +334,20 @@
               Wallet Tab
             </h3>
             <p class="mb-2">
-              This is some placeholder content for the Wallet tab's associated content. Clicking another tab will toggle the visibility of this one for the next.
+              This is some placeholder content for the Wallet tab's associated
+              content. Clicking another tab will toggle the visibility of this
+              one for the next.
             </p>
             <p>
-              The tab JavaScript swaps classes to control the content visibility and styling.
+              The tab JavaScript swaps classes to control the content visibility
+              and styling.
             </p>
           </div>
         </div>
       </div>
     </div>
+    <!-- JS Scripts -->
+    <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
   </body>
 </html>
