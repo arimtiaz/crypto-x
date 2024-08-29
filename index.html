@@ -54,15 +54,15 @@
               Market
             </button>
           </li>
-          <!-- Wishlist Tab -->
-          <li role="wishlist">
+          <!-- Watchlist Tab -->
+          <li role="watchlist">
             <button
               class="inline-flex items-center px-4 py-3 text-white rounded-lg w-full dark:bg-teal-700"
-              id="wishlist-tab"
-              data-tabs-target="#styled-wishlist"
+              id="watchlist-tab"
+              data-tabs-target="#styled-watchlist"
               type="button"
               role="tab"
-              aria-controls="styled-wishlist"
+              aria-controls="styled-watchlist"
               aria-selected="false"
             >
               <svg
@@ -82,7 +82,7 @@
                   d="m17 21-5-4-5 4V3.889a.92.92 0 0 1 .244-.629.808.808 0 0 1 .59-.26h8.333a.81.81 0 0 1 .589.26.92.92 0 0 1 .244.63V21Z"
                 />
               </svg>
-              Wishlist
+              Watchlist
             </button>
           </li>
           <!-- Wallet Tab -->
@@ -237,45 +237,23 @@
                     <th scope="col" class="px-6 py-3 w-2/12">Price</th>
                     <th scope="col" class="px-6 py-3 w-2/12">24h Change</th>
                     <th scope="col" class="px-6 py-3 w-2/12">7D Change</th>
-                    <th scope="col" class="p-4">
-                      <div class="flex items-center">
-                        <input
-                          id="checkbox-all-search"
-                          type="checkbox"
-                          class="w-4 h-4 text-blue-600 bg-neutral-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-neutral-700 dark:border-gray-600"
-                        />
-                        <label for="checkbox-all-search" class="sr-only"
-                          >checkbox</label
-                        >
-                      </div>
-                    </th>
+                    <th scope="col" class="p-4">Watchlist</th>
                   </tr>
                 </thead>
-                <tbody id="table-body">
-                  
-                </tbody>
+                <tbody id="table-body"></tbody>
               </table>
             </div>
           </div>
-          <!-- Wishlist Tab Content -->
+          <!-- Watchlist Tab Content -->
           <div
             class="hidden p-6 bg-neutral-50 text-medium text-gray-500 dark:text-gray-400 dark:bg-[#032928] rounded-lg w-full"
-            id="styled-wishlist"
+            id="styled-watchlist"
             role="tabpanel"
-            aria-labelledby="wishlist-tab"
+            aria-labelledby="watchlist-tab"
           >
-            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">
-              Wishlist Tab
-            </h3>
-            <p class="mb-2">
-              This is some placeholder content for the Wishlist tab's associated
-              content. Clicking another tab will toggle the visibility of this
-              one for the next.
-            </p>
-            <p>
-              The tab JavaScript swaps classes to control the content visibility
-              and styling.
-            </p>
+            <div id="watchlist-container" class="grid grid-cols-4">
+              
+            </div>
           </div>
           <!-- Wallet Tab Content -->
           <div
