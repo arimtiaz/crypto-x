@@ -1,10 +1,12 @@
 // TODO - Pagination, Watchlist, Search, Filter & LocalStorage
+// TODO - Project Technical Description
 
 // Api Key
 const key = "9c015b1d-fb2b-4af2-8d52-3343a74f6e36";
 const searchBar = document.getElementById("search-bar");
 
 let resData = [];
+
 // Getting Data
 async function getMarketData() {
   try {
@@ -21,7 +23,6 @@ async function getMarketData() {
     }
     const data = await response.json();
     resData = data.data;
-    // searchData(data)
     renderData(resData);
   } catch (error) {
     console.error(error.message);
@@ -30,13 +31,6 @@ async function getMarketData() {
 
 getMarketData();
 
-// Searching Data
-searchBar.addEventListener("keyup", (e) => {
-  const query = e.target.value.toLowerCase();
-  console.log(query)
-  // console.log(data)
-  const searchedData = [];
-});
 
 // Rendering Data
 function renderData(resData) {
@@ -99,3 +93,14 @@ function renderData(resData) {
     tableBody.appendChild(tableRow);
   }
 }
+
+// Searching Data
+searchBar.addEventListener("keyup", (e) => {
+  const query = e.target.value.toLowerCase();
+  console.log(query)
+  let searchedData = resData.filter((coin) => {
+    return coin.name.toLowerCase().includes(query);
+  })
+  renderData(searchedData)
+});
+
