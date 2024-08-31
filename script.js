@@ -1,4 +1,4 @@
-// TODO - Pagination, Watchlist, Filter & LocalStorage
+// TODO - Remove From Array, Pagination, Filter & LocalStorage
 // TODO - Project Technical Description
 
 // Api Key
@@ -98,19 +98,21 @@ function renderData(resData) {
     tableRow.appendChild(weekChange);
 
     // Watchlist Col
+    const watchListTd = document.createElement("td");
     const watchList = document.createElement("input");
     watchList.type = "checkbox";
     watchList.id = "watchlistbox";
     watchList.className =
-      " w-4 h-4 text-orange-600 bg-neutral-100 border-gray-300 rounded  dark:focus:ring-orange-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-neutral-700 dark:border-gray-60";
+      " w-4 h-4 text-orange-600 bg-neutral-100 border-neutral-300 rounded  dark:focus:ring-orange-600 dark:ring-offset-neutral-800 dark:focus:ring-offset-neutral-800 focus:ring-2 dark:bg-neutral-700 dark:border-neutral-60";
     watchList.addEventListener("change", (e) => {
       if (e.target.checked) {
         addToWatchList(coin);
       } else {
-        removeFromWatchList(coin)
+        removeFromWatchList(coin);
       }
     });
-    tableRow.appendChild(watchList);
+    watchListTd.appendChild(watchList);
+    tableRow.appendChild(watchListTd);
 
     tableBody.appendChild(tableRow);
   }
@@ -127,24 +129,60 @@ searchBar.addEventListener("keyup", (e) => {
 
 let watchList = [];
 function addToWatchList(coin) {
-  watchList.push(coin)
+  watchList.push(coin);
+  renderWatchList(watchList);
   // console.log(watchList)
 }
 
 // Remove from Watchlist
-function removeFromWatchList(coin){
-  watchList.pop(coin)
+function removeFromWatchList(coin) {
+  watchList.pop(coin);
+  renderWatchList(watchList);
   // console.log(watchList)
 }
 
 // Render Watch List
-function renderWatchList(){
-  const watchListContainer = document.getElementById('watchlist-container');
-  const coinCard = document.createElement('div');
-  coinCard.className= "max-w-sm border rounded-lg shadow dark:bg-gray-800 dark:border-gray-700";
-  const coinLogo = document.createElement('img');
-  coinLogo.className="rounded-t-lg";
-  watchListContainer.appendChild(coinCard)
+function renderWatchList(watchList) {
+  const watchListContainer = document.getElementById("watchlist-container");
+  const watchListTitle = document.getElementById("watchlist-title");
+  const heading = document.createElement("h1");
+  heading.className =
+    "my-6 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white";
+  console.log(watchList);
+
+  watchListContainer.innerHTML = "";
+  watchListTitle.innerHTML = ""; // Clear previous title
+
+  if (watchList.length === 0) {
+    heading.innerText = "Watchlist Empty. Add!";
+    watchListTitle.append(heading);
+  } else {
+    heading.innerText = "Your Watchlist";
+    watchListTitle.append(heading);
+    for (const coin of watchList) {
+      const coinCard = document.createElement("div");
+      coinCard.className =
+        "w-full max-w-sm border rounded-lg shadow dark:bg-neutral-800 dark:border-neutral-700 p-4 flex flex-col items-center";
+
+      const coinLogo = document.createElement("img");
+      coinLogo.className = "rounded-t-lg w-12 h-12 mb-2";
+      coinLogo.src = coin.logo;
+      coinCard.appendChild(coinLogo);
+
+      const coinName = document.createElement("h2");
+      coinName.className =
+        "mt-2 text-xl font-semibold tracking-tight text-gray-900 dark:text-white";
+      coinName.innerText = coin.name;
+      coinCard.appendChild(coinName);
+
+      const priceTd = document.createElement("p");
+      priceTd.className = "dark:text-neutral-400";
+      priceTd.innerText = `$${coin.price.toFixed(4)}`;
+      coinCard.appendChild(priceTd);
+
+      watchListContainer.appendChild(coinCard);
+    }
+  }
 }
 
-renderWatchList()
+renderWatchList(watchList);
