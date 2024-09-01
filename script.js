@@ -131,6 +131,20 @@ searchBar.addEventListener("keyup", (e) => {
   renderData(searchedData);
 });
 
+// Sorting By Price
+const sortPrice = document.getElementById('sort-price');
+if (sortPrice) {
+  sortPrice.addEventListener('change', (e) => {
+    if (e.target.checked) {
+      const sortedData = [...resData].sort((a, b) => a.price - b.price);
+      renderData(sortedData);
+    } else{
+      renderData(resData)
+    }
+  });
+}
+
+
 // Add To Watch List
 function addToWatchList(coin) {
   const exists = watchList.some((localCoin) => {
