@@ -1,11 +1,12 @@
-// TODO - Remove From Array, Pagination, Filter & LocalStorage
-// TODO - Project Technical Description
+// TODO - Pagination, Filter
+// TODO - Project Technical Description & Deploy
 
 // Api Key
 const key = "9c015b1d-fb2b-4af2-8d52-3343a74f6e36";
 const searchBar = document.getElementById("search-bar");
 
 let resData = [];
+let watchList = JSON.parse(window.localStorage.getItem("my-watchlist")) || [];
 
 // Getting Data
 async function getMarketData() {
@@ -99,19 +100,22 @@ function renderData(resData) {
 
     // Watchlist Col
     const watchListTd = document.createElement("td");
-    const watchList = document.createElement("input");
-    watchList.type = "checkbox";
-    watchList.id = "watchlistbox";
-    watchList.className =
-      " w-4 h-4 text-orange-600 bg-neutral-100 border-neutral-300 rounded  dark:focus:ring-orange-600 dark:ring-offset-neutral-800 dark:focus:ring-offset-neutral-800 focus:ring-2 dark:bg-neutral-700 dark:border-neutral-60";
-    watchList.addEventListener("change", (e) => {
+    const watchListBox = document.createElement("input");
+    watchListBox.checked = watchList.some(localCoin => localCoin.name === coin.name);
+    watchListBox.type = "checkbox";
+    watchListBox.id = "watchlistbox";
+    
+    watchListBox.className =
+      " w-4 h-4 text-orange-600 bg-neutral-100 border-neutral-300 rounded  dark:focus:ring-orange-600 dark:ring-offset-neutral-800 dark:focus:ring-offset-neutral-800 focus:ring-2 dark:bg-neutral-700 watchListBox:border-neutral-60";
+      watchListBox.addEventListener("change", (e) => {
       if (e.target.checked) {
         addToWatchList(coin);
       } else {
         removeFromWatchList(coin);
       }
+      renderWatchList(watchList);
     });
-    watchListTd.appendChild(watchList);
+    watchListTd.appendChild(watchListBox);
     tableRow.appendChild(watchListTd);
 
     tableBody.appendChild(tableRow);
@@ -127,22 +131,32 @@ searchBar.addEventListener("keyup", (e) => {
   renderData(searchedData);
 });
 
-let watchList = [];
+// Add To Watch List
 function addToWatchList(coin) {
-  watchList.push(coin);
-  renderWatchList(watchList);
-  // console.log(watchList)
+  const exists = watchList.some((localCoin) => {
+    return coin.name === localCoin.name;
+  });
+  if (!exists) {
+    watchList.push(coin);
+    renderWatchList(watchList);
+    window.localStorage.setItem("my-watchlist", JSON.stringify(watchList));
+  }
 }
 
 // Remove from Watchlist
 function removeFromWatchList(coin) {
-  watchList.pop(coin);
+  watchList.filter((item) => {
+    if (item.name == coin.name) {
+      let index = watchList.indexOf(item);
+      watchList.splice(index, 1);
+    }
+  });
   renderWatchList(watchList);
-  // console.log(watchList)
+  window.localStorage.setItem("my-watchlist", JSON.stringify(watchList));
 }
 
 // Render Watch List
-function renderWatchList(watchList) {
+function renderWatchList() {
   const watchListContainer = document.getElementById("watchlist-container");
   const watchListTitle = document.getElementById("watchlist-title");
   const heading = document.createElement("h1");
